@@ -13,7 +13,6 @@ ACCOUNT_PRIV_KEY=""
 SIGNING_PUBLIC_KEY=""
 SIGNING_PRIV_KEY=""
 
-WALLET_HOST="127.0.0.1"
 WALLET_PORT="8888"
 # Data directory for wallet. Leave blank if you want it to be made automatically.
 WALLET_DIR=""
