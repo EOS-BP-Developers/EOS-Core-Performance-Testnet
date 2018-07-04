@@ -6,9 +6,7 @@ API_PORT="9999"
 P2P_PORT="9876"
 NODE_IP=""
 
-EOS_PRODUCER_NAME=""
-ACCOUNT_PUB_KEY=""
-ACCOUNT_PRIV_KEY=""
+PRODUCER_NAME=""
 # Signing key can be the same as account keys. This is just a performance testnet.
 SIGNING_PUBLIC_KEY=""
 SIGNING_PRIV_KEY=""
