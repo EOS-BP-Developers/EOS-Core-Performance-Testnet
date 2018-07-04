@@ -15,6 +15,5 @@ SIGNING_PRIV_KEY=""
 
 WALLET_HOST="127.0.0.1"
 WALLET_PORT="8888"
-
-NODE_BIN=""
-CLEOS_BIN=""
+# Data directory for wallet. Leave blank if you want it to be made automatically.
+WALLET_DIR=""
