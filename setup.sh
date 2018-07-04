@@ -52,8 +52,6 @@ if [[ ! -f $WALLET_DIR/wallet.pid ]]; then
     $WALLET_DIR/start.sh
 fi
 
-    mkdir $TESTNET_DIR
-
     # Creating node start.sh
     echo "..:: Creating start.sh ::..";
     echo -ne "$signature" > $TESTNET_DIR/start.sh
