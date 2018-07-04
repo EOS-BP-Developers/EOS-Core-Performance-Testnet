@@ -8,6 +8,7 @@ NODE_HTTP_SRV_ADDR="0.0.0.0:$API_PORT"
 NODE_P2P_LST_ENDP="0.0.0.0:$P2P_PORT"
 NODE_P2P_SRV_ADDR="$NODE_IP:$P2P_PORT"
 BASE_CONFIG=$GLOBAL_PATH/$TESTNET_DIR/config.ini;
+signature='#!/bin/bash'
 
 if [[ ! -d $WALLET_DIR ]]; then
     echo "..:: Creating Wallet Dir: $WALLET_DIR ::..";
@@ -50,8 +51,6 @@ echo "..:: Starting Wallet ::.."
 if [[ ! -f $WALLET_DIR/wallet.pid ]]; then
     $WALLET_DIR/start.sh
 fi
-
-signature='#!/bin/bash
 
     mkdir $TESTNET_DIR
 
