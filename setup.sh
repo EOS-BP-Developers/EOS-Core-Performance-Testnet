@@ -10,51 +10,10 @@ NODE_P2P_SRV_ADDR="$NODE_IP:$P2P_PORT"
 BASE_CONFIG=$TESTNET_DIR/config.ini;
 signature='#!/bin/bash'
 
-if [[ ! -d $WALLET_DIR ]]; then
-    echo "..:: Creating Wallet Dir: $WALLET_DIR ::..";
-    mkdir $WALLET_DIR
-
-    echo "..:: Creating Wallet start.sh ::..";
-    # Creating start.sh for wallet
-    echo -ne "$signature" > $WALLET_DIR/start.sh
-    echo "DATADIR=$WALLET_DIR" >> $WALLET_DIR/start.sh
-    echo "\$DATADIR/stop.sh" >> $WALLET_DIR/start.sh
-    echo "$EOS_SOURCE_DIR/build/programs/keosd/keosd --data-dir \$DATADIR --http-server-address $WALLET_HOST:$WALLET_PORT \"\$@\" > $WALLET_DIR/stdout.txt 2> $WALLET_DIR/stderr.txt  & echo \$! > \$DATADIR/wallet.pid" >> $WALLET_DIR/start.sh
-    echo "echo \"Wallet started\"" >> $WALLET_DIR/start.sh
-    chmod u+x $WALLET_DIR/start.sh
-
-
-    # Creating stop.sh for wallet
-    echo -ne "$signature" > $WALLET_DIR/stop.sh
-    echo "DIR=$WALLET_DIR" >> $WALLET_DIR/stop.sh
-    echo '
-    if [ -f $DIR"/wallet.pid" ]; then
-        pid=$(cat $DIR"/wallet.pid")
-        echo $pid
-        kill $pid
-        rm -r $DIR"/wallet.pid"
-        echo -ne "Stopping Wallet"
-        while true; do
-            [ ! -d "/proc/$pid/fd" ] && break
-            echo -ne "."
-            sleep 1
-        done
-        echo -ne "\rWallet stopped. \n"
-    fi
-    ' >>  $WALLET_DIR/stop.sh
-    chmod u+x $WALLET_DIR/stop.sh
-
-fi
-
-#start Wallet
-echo "..:: Starting Wallet ::.."
-if [[ ! -f $WALLET_DIR/wallet.pid ]]; then
-    $WALLET_DIR/start.sh
-fi
-
     # Creating node start.sh
     echo "..:: Creating start.sh ::..";
     echo -ne "$signature" > $TESTNET_DIR/start.sh
+    echo "" >> $TESTNET_DIR/start.sh
     echo "NODEOS=$EOS_SOURCE_DIR/build/programs/nodeos/nodeos" >> $TESTNET_DIR/start.sh
     echo "DATADIR=$TESTNET_DIR" >> $TESTNET_DIR/start.sh
     echo -ne "\n";
@@ -67,6 +26,7 @@ fi
     # Creating node stop.sh
     echo "..:: Creating stop.sh ::..";
     echo -ne "$signature" > $TESTNET_DIR/stop.sh
+    echo "" >> $TESTNET_DIR/stop.sh
     echo "DIR=$TESTNET_DIR" >> $TESTNET_DIR/stop.sh
     echo -ne "\n";
     echo '
