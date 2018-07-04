@@ -129,7 +129,7 @@ p2p-max-nodes-per-host = 1
 
 agent-name = "agent"
 allowed-connection = any
-' >> $BASE_CONFIG
+' > $BASE_CONFIG
 
 echo 'signature-provider = '$SIGNING_PUBLIC_KEY'='KEY:$SIGNING_PRIV_KEY'' >> $BASE_CONFIG;
 
