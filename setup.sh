@@ -52,7 +52,7 @@ signature='#!/bin/bash'
     echo -ne "$signature" > $TESTNET_DIR/cleos.sh
     echo "CLEOS=$EOS_SOURCE_DIR/build/programs/cleos/cleos" >> $TESTNET_DIR/cleos.sh
     echo -ne "\n"
-    echo "\$CLEOS -u https://127.0.0.1:$API_PORT --wallet-url http://127.0.0.1:$WALLET_PORT \"\$@\"" >> $TESTNET_DIR/cleos.sh
+    echo "\$CLEOS -u http://127.0.0.1:$API_PORT --wallet-url http://127.0.0.1:$WALLET_PORT \"\$@\"" >> $TESTNET_DIR/cleos.sh
     chmod u+x $TESTNET_DIR/cleos.sh
 
 # config.ini
